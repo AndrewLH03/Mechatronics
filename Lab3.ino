@@ -1,5 +1,3 @@
-#include <Arduino.h>
-
 const int ledPin = 11;
 int val = 0;
 
