@@ -1,0 +1,47 @@
+% Create a new figure window
+figure;
+
+% plot the x and y axes
+plot([-5 5],[0 0],'k--',"LineWidth",1);
+hold on
+plot([0 0],[-5 5],'k--',"LineWidth",1) ;
+
+% some plot settings 
+box on;
+axis equal; 
+xlim([-2 5]); ylim([-2 5]);
+xlabel('$x$ (in)','Interpreter',"latex","FontSize",14);
+ylabel('$y$ (in)','Interpreter',"latex","FontSize",14);
+
+% plot joint between ground and L2
+plot(0, 0,'ko',"LineWidth",2,'MarkerSize',6);
+
+% plot L2
+Ax=a*cos(theta2(i));
+Ay=a*sin(theta2(i));
+plot([0 Ax],[0 Ay],'b',"LineWidth",2);
+
+% plot joint between L2 and L3
+plot(Ax, Ay,'ro',"LineWidth",2,'MarkerSize',6);
+
+% plot L3
+Bx=Ax+b*cosd(theta3(i));
+By=Ay+b*sind(theta3(i));
+plot([Ax Bx],[Ay By],'b',"LineWidth",2);
+
+% plot joint between L3 and ground
+plot(Bx,By,'ro',"LineWidth",2,'MarkerSize',6);
+
+% plot L4
+plot([d Bx],[0 By],'b',"LineWidth",2);
+
+% plot joint between L4 and ground
+plot(d,0,'ko',"LineWidth",2,'MarkerSize',6);
+
+% plot coupler triangle
+plot([Ax Px(i)],[Ay Py(i)],'b',"LineWidth",2);
+plot([Bx Px(i)],[By Py(i)],'b',"LineWidth",2);
+
+% plot point P
+plot([Px(i)],[Py(i)],'r.',"LineWidth",2,'MarkerSize',12)
+plot([Px],[Py],'k.',"LineWidth",0.4,'MarkerSize',5)
